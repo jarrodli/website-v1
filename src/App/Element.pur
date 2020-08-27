@@ -1,0 +1,54 @@
+module App.Element where
+
+import Prelude
+
+import DOM.HTML.Indexed (HTMLa, HTMLbutton)
+import Halogen.HTML as HH
+import Halogen.HTML.Properties as HP
+
+type Plain i p = Array (HH.HTML i p) -> HH.HTML i p
+
+class_ :: forall r t. String -> HH.IProp ( "class" :: String | r ) t
+class_ = HP.class_ <<< HH.ClassName
+
+----------
+-- Typography
+
+h1_ :: forall i p. Plain i p
+h1_ = HH.h1 [ class_ "title" ]
+
+h2_ :: forall i p. Plain i p
+h2_ = HH.h2 [ class_ "subtitle is-size-4 has-text-grey" ]
+
+p_ :: forall i p. String -> HH.HTML i p
+p_ str = HH.p_ [ HH.text str ]
+
+a :: forall i p. Array (HH.IProp HTMLa p) -> Plain i p
+a props = HH.a ([ class_ "has-text-blue" ] <> props)
+
+----------
+-- Layout
+
+section_ :: forall i p. Plain i p
+section_ content =
+  HH.section
+    [ class_ "section columns" ]
+    [ HH.div
+        [ class_ "column is-11-tablet is-three-fifths-desktop" ]
+        content
+    ]
+
+content_ :: forall i p. Plain i p
+content_ = HH.div [ class_ "content" ]
+
+--------
+-- Buttons
+
+button :: forall i p. Array (HH.IProp HTMLbutton p) -> Plain i p
+button props = HH.button ([ class_ "button is-light" ] <> props)
+
+buttonDark :: forall i p. Array (HH.IProp HTMLbutton p) -> Plain i p
+buttonDark props = HH.button ([ class_ "button is-dark" ] <> props)
+
+buttonPrimary :: forall i p. Array (HH.IProp HTMLbutton p) -> Plain i p
+buttonPrimary props = HH.button ([ class_ "button is-link" ] <> props)
