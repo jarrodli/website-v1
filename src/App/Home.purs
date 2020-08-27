@@ -72,6 +72,9 @@ render state =
         , UI.a
             [ HP.href "https://github.com/jarrodli" ]
             [ HH.text "github" ]
+        , UI.a
+            [ HP.href "https://github.com/jarrodli/jarrodsite "]
+            [ HH.text "website source" ] 
         ]
       ]
     ]
