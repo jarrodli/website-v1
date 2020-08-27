@@ -1,0 +1,44 @@
+section {
+  font-family: 'CMUConcreteRoman';
+  font-style: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1em;
+  padding: 1em;
+}
+
+h1 {
+  color: #ff6666;
+}
+
+a {
+  color: #80cee1;
+  padding-left: 1em;
+}
+
+
+.simple-enter {
+  opacity: 0;
+}
+.simple-enter-active-2 {
+  opacity: 1;
+  transition: opacity 2s ease-in;
+}
+.simple-enter-active-4 {
+  opacity: 1;
+  transition: opacity 4s ease-in;
+}
+.simple-enter-active-8 {
+  opacity: 1;
+  transition: opacity 6s ease-in;
+}
+.simple-leave {
+  opacity: 1;
+}
+.simple-leave-active {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}

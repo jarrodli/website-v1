@@ -2,17 +2,15 @@ module App.Home where
 
 import Prelude
 
-import Halogen as H
-import Halogen.HTML as HH
-import Halogen.HTML.Properties as HP
-import Halogen.HTML.Events as HE
-import Halogen.Transition as Transition
-
 import App.Element as UI
 import Data.Const (Const)
 import Data.Maybe (Maybe(..))
 import Data.Symbol (SProxy(..))
 import Effect.Aff (Aff)
+import Halogen as H
+import Halogen.HTML as HH
+import Halogen.HTML.Properties as HP
+import Halogen.Transition as Transition
 
 
 type Plain i p = Array (HH.HTML i p) -> HH.HTML i p
@@ -38,52 +36,42 @@ component =
     { initialState: const initialState
     , render
     , eval: H.mkEval H.defaultEval
-      { handleAction = handleAction }
     }
 
 -----
 -- Render
 
-renderInner :: Transition.HTML Action Aff
-renderInner =
-  HH.div
-  [ HE.onClick $ Just <<< const (Transition.raise OnClick) ]
-  [ HH.text "hello world!" ]
+renderAnimation :: State -> String -> String -> HTML
+renderAnimation state t fade = HH.slot _transition unit Transition.component 
+    { enterClass: "simple-enter"
+    , enterActiveClass: fade
+    , leaveClass: "simple-leave"
+    , leaveActiveClass: "simple-leave-active"
+    , shown: state.shown
+    , render: HH.text t
+    } $ Just <<< HandleTransition
+
+
 
 render :: State -> HTML
 render state =
   HH.section_
-    [ UI.h1_ [ HH.text "This is pretty cool hey!" ]
+    [ UI.row_ [ HH.h1_ [ renderAnimation initialState "Jarrod Li" "simple-enter-active-2"] ]
+    , UI.row_ [ UI.h2_ [ renderAnimation initialState "Hello 👋" "simple-enter-active-4" ] ]
     , UI.content_
-        [ UI.p_
-            """
-            My name is Jeff.
-            """
+      [ UI.row_ [ UI.h3_ [ renderAnimation initialState "I'm a software engineer intern at an Australian bank." 
+                 "simple-enter-active-8" ] ]
+      , UI.row_ [ UI.h3_ [ renderAnimation initialState "I also study Computer Science and Law and UNSW Australia."
+                 "simple-enter-active-8" ] ]
+      , UI.row_ [ UI.h3_ [ renderAnimation initialState "This SPA was built with the Halogen framework and powered by purescript." 
+                 "simple-enter-active-8" ] ]
+      , UI.row_ 
+        [ UI.a
+            [ HP.href "https://www.linkedin.com/in/jarrodli/"  ]
+            [ HH.text "linkedin" ]
         , UI.a
-            [ HP.href "www.google.com.au" ]
-            [ HH.text "google!" ]
+            [ HP.href "https://github.com/jarrodli" ]
+            [ HH.text "github" ]
+        ]
       ]
-    , HH.button
-          [ HE.onClick $ Just <<< const OnClick ]
-          [ HH.text "toggle" ]
-    , HH.slot _transition unit Transition.component 
-    { enterClass: "simple-enter"
-    , enterActiveClass: "simple-enter-active"
-    , leaveClass: "simple-leave"
-    , leaveActiveClass: "simple-leave-active"
-    , shown: state.shown
-    , render: renderInner
-    } $ Just <<< HandleTransition
-  ]
-
-
------
--- Actions
-
-handleAction :: Action -> DSL Unit
-handleAction = case _ of
-  OnClick -> do
-    H.modify_ $ \s -> s { shown = not s.shown }
-
-  HandleTransition msg -> do
-    handleAction msg
+    ]

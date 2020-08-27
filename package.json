@@ -8,7 +8,8 @@
   "scripts": {
     "build": "spago build",
     "serve": "parcel src/index.html --open",
-    "build-prod": "mkdir -p prod && cp dev/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html"
+    "build-prod": "mkdir -p prod && cp src/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
+    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html"
   },
   "dependencies": {},
   "name": "purescript",
