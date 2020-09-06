@@ -66,15 +66,16 @@ render state =
       , UI.row_ [ UI.h3_ [ renderAnimation initialState "This SPA was built with the Halogen framework and powered by purescript." 
                  "simple-enter-active-8" ] ]
       , UI.row_ 
-        [ UI.a
+        [ UI.a0
             [ HP.href "https://www.linkedin.com/in/jarrodli/"  ]
             [ HH.text "linkedin" ]
-        , UI.a
+        , UI.a1
             [ HP.href "https://github.com/jarrodli" ]
             [ HH.text "github" ]
-        , UI.a
+        , UI.a1
             [ HP.href "https://github.com/jarrodli/jarrodsite "]
-            [ HH.text "website source" ] 
+            [ HH.text "source" ] 
+        , UI.p_ "< admin at jarrodli dot com >"
         ]
       ]
     ]
