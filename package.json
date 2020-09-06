@@ -8,10 +8,13 @@
   "scripts": {
     "build": "spago build",
     "serve": "parcel src/index.html --open",
-    "build-prod": "mkdir -p prod && cp src/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
-    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html"
+    "build-prod": "mkdir -p prod && cp src/skeleton.css prod/ && cp src/styles.css prod/ && cp src/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
+    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html",
+    "deploy": "gh-pages -d prod"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "name": "purescript",
   "description": "### Quick Start ```sh git clone https://github.com/purescript-halogen/purescript-halogen-template.git halogen-project cd halogen-project npm install npm run build npm run serve ```",
   "version": "1.0.0",
