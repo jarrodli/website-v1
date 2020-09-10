@@ -20,7 +20,7 @@ a {
 
 p {
   border-radius: 3em;
-  padding: 3em;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   align-content: center;
