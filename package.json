@@ -8,8 +8,7 @@
   "scripts": {
     "build": "spago build",
     "serve": "parcel src/index.html --open",
-    "build-prod": "mkdir -p prod && cp src/skeleton.css prod/ && cp src/styles.css prod/ && cp src/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
-    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html",
+    "build-prod": "mkdir -p prod && cp assets/*.svg prod/ && cp src/skeleton.css prod/ && cp src/styles.css prod/ && cp src/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html",
     "deploy": "gh-pages -d prod"
   },
   "dependencies": {

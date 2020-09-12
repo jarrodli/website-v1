@@ -15,8 +15,17 @@ h1 {
 }
 
 a {
-  color: #80cee1;
+  margin-top: 1em;
+  font-size: 3.5rem;
+  display:block;
+  text-indent:-9999em;
 }
+
+a:hover,
+a:focus {
+  filter: invert(45%) sepia(49%) saturate(2297%) hue-rotate(162deg) brightness(96%) contrast(101%);
+}
+
 
 p {
   border-radius: 3em;
@@ -28,12 +37,26 @@ p {
   align-items: center; 
 }
 
-.a0 {
-  padding-left: 0em;
+.linkedin {
+  background: url('./linkedin.svg');
+  width: 1em;
+  height: 1em;
+  background-size: 1em 1em;
 }
 
-.a1 {
-  padding-left: 1em;
+.github {
+  background: url('./github.svg');
+  width: 1em;
+  height: 1em;
+  background-size: 1em 1em;
+}
+
+
+.src {
+  background: url('../assets/code.svg');
+  width: 1em;
+  height: 1em;
+  background-size: 1em 1em;
 }
 
 .simple-enter {

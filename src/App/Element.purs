@@ -44,3 +44,18 @@ content_ = HH.div [ class_ "container" ]
 
 row_ :: forall i p. Plain i p
 row_ content = HH.div [ class_ "row" ] content
+
+col_ :: forall i p. Plain i p
+col_ content = HH.div [ class_ "one-third column" ] content
+
+----------
+-- Svgs
+
+linkedin :: forall i p. Array (HH.IProp HTMLa p) -> Plain i p
+linkedin props = HH.a ([ class_ "linkedin" ] <> props)
+
+github :: forall i p. Array (HH.IProp HTMLa p) -> Plain i p
+github props = HH.a ([ class_ "github" ] <> props)
+
+src :: forall i p. Array (HH.IProp HTMLa p) -> Plain i p
+src props = HH.a ([ class_ "src" ] <> props)

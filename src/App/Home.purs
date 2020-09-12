@@ -61,20 +61,27 @@ render state =
     , UI.content_
       [ UI.row_ [ UI.h3_ [ renderAnimation initialState "I'm a software engineer intern at an Australian bank." 
                  "simple-enter-active-8" ] ]
-      , UI.row_ [ UI.h3_ [ renderAnimation initialState "I also study Computer Science and Law and UNSW Australia."
+      , UI.row_ [ UI.h3_ [ renderAnimation initialState "I also study Computer Science and Law at UNSW Australia."
                  "simple-enter-active-8" ] ]
-      , UI.row_ [ UI.h3_ [ renderAnimation initialState "This SPA was built with the Halogen framework and powered by purescript." 
+      , UI.row_ [ UI.h3_ [ renderAnimation initialState "This SPA was built with the Halogen framework, and powered by purescript." 
                  "simple-enter-active-8" ] ]
-      , UI.row_ 
-        [ UI.a0
+      , UI.row_ [
+        UI.col_ 
+        [ UI.linkedin
             [ HP.href "https://www.linkedin.com/in/jarrodli/"  ]
-            [ HH.text "linkedin" ]
-        , UI.a1
+            [ HH.text "" ] 
+        ]
+        , UI.col_ 
+        [ UI.github
             [ HP.href "https://github.com/jarrodli" ]
-            [ HH.text "github" ]
-        , UI.a1
+            [ HH.text "" ] 
+        ]
+        , UI.col_ 
+        [ UI.src
             [ HP.href "https://github.com/jarrodli/jarrodsite "]
-            [ HH.text "source" ] 
+            [ HH.text "" ] 
+        ]
+        , UI.row_ []
         , UI.p_ "< admin at jarrodli dot com >"
         ]
       ]
