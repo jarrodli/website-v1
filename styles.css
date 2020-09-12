@@ -53,7 +53,7 @@ p {
 
 
 .src {
-  background: url('../assets/code.svg');
+  background: url('./code.svg');
   width: 1em;
   height: 1em;
   background-size: 1em 1em;
